@@ -1,8 +1,8 @@
 # 📦 Sistema de Gerenciamento de Estoque
 
-API REST desenvolvida em **Java 17** com **Spring Boot** para gerenciamento de produtos e categorias, aplicando arquitetura em camadas, boas práticas de desenvolvimento backend e containerização com Docker.
+API REST desenvolvida em **Java 17** com **Spring Boot** para gerenciamento de produtos e categorias, aplicando arquitetura em camadas, boas práticas de desenvolvimento backend, testes automatizados e containerização com Docker.
 
-Este projeto foi desenvolvido como parte do meu processo de evolução como desenvolvedor backend, consolidando conhecimentos em APIs REST, persistência de dados e ambiente containerizado.
+Este projeto foi desenvolvido como parte do meu processo de evolução como desenvolvedor backend, consolidando conhecimentos em APIs REST, persistência de dados, testes de software e ambiente containerizado.
 
 ---
 
@@ -16,6 +16,8 @@ Este projeto foi desenvolvido como parte do meu processo de evolução como dese
 - Docker
 - Docker Compose
 - Swagger (OpenAPI)
+- JUnit 5
+- Mockito
 
 ---
 
@@ -45,6 +47,42 @@ src/
 
 ---
 
+## 🧪 Testes Automatizados
+
+Foram implementados **testes unitários para a camada de Service**, garantindo o correto funcionamento das regras de negócio.
+
+Os testes foram desenvolvidos utilizando:
+
+- **JUnit 5**
+- **Mockito**
+
+Os testes simulam o comportamento dos repositórios, permitindo validar a lógica do serviço de forma isolada.
+
+### Cenários testados no `ProductService`
+
+- Criação de produto
+- Listagem de produtos
+- Busca de produto por ID
+- Busca de produtos por categoria
+- Atualização de produto
+- Remoção de produto
+
+Durante os testes são verificados:
+
+- conversão correta entre **Entity → DTO**
+- interação correta com os **Repositories**
+- comportamento esperado das regras de negócio
+
+Exemplo de verificação realizada nos testes:
+
+```java
+verify(productRepository).save(any(Product.class));
+```
+
+Isso garante que o serviço realmente executou a operação esperada.
+
+---
+
 ## 🐳 Executando com Docker
 
 ### 📌 Pré-requisitos
@@ -59,11 +97,11 @@ docker compose up --build
 
 Após subir os containers:
 
-- **API:**  
-  http://localhost:8080
+**API:**  
+http://localhost:8080
 
-- **Swagger (Documentação da API):**  
-  http://localhost:8080/swagger-ui/index.html
+**Swagger (Documentação da API):**  
+http://localhost:8080/swagger-ui/index.html
 
 ---
 
@@ -94,6 +132,7 @@ Este projeto tem como objetivo consolidar conhecimentos em:
 - Desenvolvimento de APIs REST
 - Organização de código com arquitetura em camadas
 - Integração com banco de dados relacional
+- Testes unitários em aplicações backend
 - Containerização de aplicações com Docker
 - Estruturação de projetos backend para portfólio
 
@@ -103,7 +142,6 @@ Este projeto tem como objetivo consolidar conhecimentos em:
 
 - Implementação de autenticação com JWT
 - Paginação e filtros dinâmicos
-- Testes automatizados (JUnit)
 - Versionamento de banco com Flyway
 - Deploy em ambiente cloud
 
