@@ -26,7 +26,7 @@ public class ProductService {
 
     public ProductResponseDTO save(ProductRequestDTO dto) {
         Category category = categoryRepository.findById(dto.getCategoryId())
-                .orElseThrow(() -> new ResourceNotFoundException("Categoria não com o id: " + dto.getCategoryId() + " encontrada"));
+                .orElseThrow(() -> new ResourceNotFoundException("Categoria com o id: " + dto.getCategoryId() + " não encontrada"));
 
         Product product = new Product();
         product.setName(dto.getName());
